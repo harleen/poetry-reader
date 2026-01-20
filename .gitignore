@@ -1,0 +1,13 @@
+# Private content (never committed)
+poems/
+curation/
+
+#Genrated Content
+site/src/generated/
+
+#Usual
+node_modules/
+dist/
+.env
+.DS_Store
+

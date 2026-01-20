@@ -1,0 +1,19 @@
+{
+  "name": "poetry-reader",
+  "private": true,
+  "scripts": {
+    "build:content": "npx ts-node --project tsconfig.build.json content-build/scripts/build-reading-model.cts",
+    "dev": "npm run build:content && cd site && npm run dev",
+    "build": "npm run build:content && cd site && npm run build"
+  },
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "js-yaml": "^4.1.1"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^25.0.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
