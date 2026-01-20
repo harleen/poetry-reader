@@ -8,19 +8,18 @@ type Props = {
 
 export function ReaderNav({ poems, currentId, onSelect }: Props) {
   return (
-    <nav style={{ width: 240, padding: 16, borderRight: "1px solid #ddd" }}>
+    <nav>
       <h3>Poems</h3>
-      <ul style={{ listStyle: "none", padding: 0 }}>
-        {poems.map(poem => (
+      <ul className="reader-nav-list">
+        {poems.map((poem) => (
           <li key={poem.id}>
             <button
+              className={
+                poem.id === currentId
+                  ? "reader-nav-item active"
+                  : "reader-nav-item"
+              }
               onClick={() => onSelect(poem.id)}
-              style={{
-                background: poem.id === currentId ? "#eee" : "transparent",
-                border: "none",
-                cursor: "pointer",
-                textAlign: "left",
-              }}
             >
               {poem.title}
             </button>
