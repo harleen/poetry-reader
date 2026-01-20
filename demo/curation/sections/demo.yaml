@@ -1,0 +1,7 @@
+id: demo
+title: Demo Section
+
+poems:
+  - demo-1.md
+  - demo-2.md
+

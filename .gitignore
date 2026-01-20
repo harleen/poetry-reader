@@ -1,6 +1,6 @@
 # Private content (never committed)
-poems/
-curation/
+/poems/
+/curation/
 
 #Genrated Content
 site/src/generated/
