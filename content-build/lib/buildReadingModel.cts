@@ -14,11 +14,7 @@ import { makePoemId } from "./poemId.cts";
 
 export function buildReadingModel(): ReadingModel {
   const { poemsRoot, curationRoot } = resolveContentRoots();
-
-  const nav = readYamlFile<NavManifest>(
-    path.resolve(curationRoot, "nav.yaml")
-  );
-
+  const nav = readYamlFile<NavManifest>(`${curationRoot}/nav.yaml`);
   const sections: Section[] = [];
   const linearPoems: Poem[] = [];
 
