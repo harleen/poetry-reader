@@ -16,15 +16,11 @@ If you’d like to use this reader to put your own poems on the web, see **“Ad
 - Supports sections and ordering via simple files
 - Builds to a static site (no server required)
 
----
-
 ## Included
 
 - A demo set of poems
 - A basic reader layout (navigation + poem view)
 - A build step that prepares poems for the reader
-
----
 
 ## Development
 
@@ -32,8 +28,7 @@ If you’d like to use this reader to put your own poems on the web, see **“Ad
 npm install
 npm run build:content
 npm run dev
-
----
+```
 
 ## Adding your own poems
 
