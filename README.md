@@ -36,20 +36,9 @@ If you’d like to use this reader to put your own poems on the web, follow the 
 
 HOW IT WORKS
 
-Poem files (.md or .txt)
-        |
-        v
-Section files (YAML)
-        |
-        v
-Navigation file (YAML)
-        |
-        v
-Build step
-        |
-        v
-Static poetry reader
-
+You create: Poem files (.md or .txt) ; Section files (YAML) ; Navigation file (YAML) [See demo folder]
+You run: Build step
+You host: Static poetry reader with your own content
 
 Step 1: Add your poem files
 Add your poems as .md or .txt files. 

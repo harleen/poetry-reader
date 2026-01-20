@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { ReadingModel, Poem } from "../../models/readingModel";
+import type { ReadingModel } from "../../../models/readingModel";
 
 export function useReaderState(model: ReadingModel) {
   const [currentId, setCurrentId] = useState(
