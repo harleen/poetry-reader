@@ -12,7 +12,10 @@ import { resolveContentRoots } from "./resolveContentRoots.cts";
 import { parsePoem } from "./parsePoem.cts";
 import { makePoemId } from "./poemId.cts";
 
-export function buildReadingModel(): ReadingModel {
+export function buildReadingModel(): {
+  readingModel: ReadingModel;
+  poems: Poem[];
+} {
   const { poemsRoot, curationRoot } = resolveContentRoots();
   const nav = readYamlFile<NavManifest>(`${curationRoot}/nav.yaml`);
   const sections: Section[] = [];
@@ -46,5 +49,8 @@ export function buildReadingModel(): ReadingModel {
     });
   }
 
-  return { sections, linearPoems };
+  return {
+    readingModel: { sections, linearPoems },
+    poems: linearPoems,
+  };
 }

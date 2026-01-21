@@ -10,4 +10,5 @@ measure,
 and navigation.
 
 Nothing here is precious.
+I carry the word in my hand.
 
