@@ -1,0 +1,110 @@
+.motifs-page {
+  padding: 0rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.explore-card {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+
+  padding: 1.75rem 2.25rem;
+
+  max-width: 720px;
+  width: 100%;
+
+  margin: 0 auto;
+  text-align: center;
+}
+
+.explore-separator {
+  height: 4rem;          /* controls how much texture shows */
+  width: 100%;
+}
+
+.motifs-heading {
+  margin: 0 0 1.25rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.motifs-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  justify-content: center;
+}
+
+.motif-item {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: inline-flex;
+  gap: 0.4rem;
+  align-items: baseline;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.motif-item--active {
+  text-decoration: underline;
+}
+
+.motif-count {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.poems-region {
+  max-width: 720px;
+  margin: 3rem auto 0;
+  padding-top: 2rem;
+}
+
+.motif-results-heading {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.motif-poem-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.motif-poem-list li {
+  margin-bottom: 0.5rem;
+}
+
+.motif-results {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.motif-results ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.motif-results li {
+  margin-bottom: 0.75rem;
+}
+
+.motif-results a {
+  color: #222;
+  text-decoration: none;
+}
+
+.motif-results a:hover {
+  text-decoration: underline;
+}
+
+.motif-empty {
+  color: #666;
+  font-style: italic;
+}

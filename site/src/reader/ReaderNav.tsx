@@ -1,4 +1,6 @@
 import type { Poem } from "../../../models/readingModel";
+import { usePoemSearch } from "./usePoemSearch";
+import { Link } from "react-router-dom";
 
 type Props = {
   poems: Poem[];
@@ -7,11 +9,24 @@ type Props = {
 };
 
 export function ReaderNav({ poems, currentId, onSelect }: Props) {
+  const { query, setQuery, results, isSearching } =
+    usePoemSearch(poems);
+
   return (
     <nav>
-      <h3>Poems</h3>
+      <h3>{isSearching ? "Results" : "Poems"}</h3>
+
+      <input
+        className="reader-search"
+        type="search"
+        placeholder="Search…"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        aria-label="Search poems"
+      />
+
       <ul className="reader-nav-list">
-        {poems.map((poem) => (
+        {results.map((poem) => (
           <li key={poem.id}>
             <button
               className={
@@ -26,6 +41,16 @@ export function ReaderNav({ poems, currentId, onSelect }: Props) {
           </li>
         ))}
       </ul>
+
+      {results.length === 0 && isSearching && (
+        <div className="reader-empty">
+          No poems match this search.
+        </div>
+      )}
+
+      <div className="reader-nav-footer">
+        <Link className="reader-nav-explore" to="/explore">EXPLORE</Link>
+      </div>
     </nav>
   );
 }

@@ -1,0 +1,78 @@
+/* =========================================================
+   Explore Texture Background
+   Purpose: Ambient language field only
+   No interaction. No layout authority.
+   ========================================================= */
+
+/* Root wrapper that hosts the texture layer */
+.explore-root {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+
+/* Texture layer */
+.explore-texture {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  pointer-events: none;
+  user-select: none;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: flex-start;
+
+  gap: 1.25rem 2rem;
+  padding: 3rem;
+
+  overflow: hidden;
+}
+
+/* Individual texture terms */
+.texture-word {
+  font-size: 0.85rem;
+  font-weight: 400;
+  line-height: 1;
+
+  color: var(--texture-sand);
+  opacity: 0.35;
+
+  white-space: nowrap;
+}
+
+/* Ensure real content always sits above texture */
+.explore-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* -----------------------------------------
+   Mobile tuning (important)
+   ----------------------------------------- */
+@media (max-width: 640px) {
+  .explore-texture {
+    gap: 1rem 1.25rem;
+    padding: 2rem;
+  }
+
+  .texture-word {
+    font-size: 0.75rem;
+    opacity: 0.3;
+  }
+}
+
+:root {
+  --texture-sand: #d8cfc2; /* warm, paper-like */
+  /* Warmer */
+  /*--texture-sand: #dcc7a6;*/
+
+  /* Cooler parchment */
+  /*--texture-sand: #d4cdc2;   */
+
+  /* Very subtle */
+  /*--texture-sand: #e2dbd0;*/
+}

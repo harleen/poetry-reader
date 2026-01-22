@@ -14,6 +14,7 @@ export type MotifStats = {
   version: 1;
   terms: {
     term: string;
+    poemIds: string[];
     totalCount: number;
     poemCount: number;
   }[];
@@ -54,9 +55,26 @@ export function buildMotifStats(poems: Poem[]): MotifStats {
 
     // ---- selection thresholds (conservative defaults) ----
     const totalPoems = poems.length;
-    const MIN_POEM_COUNT = totalPoems < 5 ? 2 : Math.max(2, Math.floor(totalPoems * 0.1));
-    const MAX_MOTIF_COVERAGE = totalPoems < 5 ? 0.8 : 0.5;
-    const TEXTURE_MIN_COVERAGE = totalPoems < 5 ? 0.6 : 0.7;
+    let MIN_POEM_COUNT: number;
+    let MAX_MOTIF_COVERAGE: number;
+    let TEXTURE_MIN_COVERAGE: number;
+
+    if (totalPoems <= 4) {
+        // Very small corpus: favor motifs, suppress texture
+        MIN_POEM_COUNT = 2;
+        MAX_MOTIF_COVERAGE = 1.0;   // allow even near-universal motifs
+        TEXTURE_MIN_COVERAGE = 1.0; // texture only if literally everywhere
+    } else if (totalPoems <= 10) {
+        // Small corpus
+        MIN_POEM_COUNT = 2;
+        MAX_MOTIF_COVERAGE = 0.8;
+        TEXTURE_MIN_COVERAGE = 0.9;
+    } else {
+        // Larger corpus
+        MIN_POEM_COUNT = Math.max(2, Math.floor(totalPoems * 0.1));
+        MAX_MOTIF_COVERAGE = 0.5;
+        TEXTURE_MIN_COVERAGE = 0.7;
+    }
 
     const motifs: MotifStats["terms"] = [];
     const texture: MotifStats["texture"] = [];
@@ -78,6 +96,7 @@ export function buildMotifStats(poems: Poem[]): MotifStats {
         ) {
             motifs.push({
             term,
+            poemIds: Array.from(stats.poemIds),
             totalCount: stats.totalCount,
             poemCount,
             });

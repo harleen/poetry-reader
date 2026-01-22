@@ -205,3 +205,46 @@
     color: #e0e0e0;
   }
 }
+
+/* ================================
+   Search Input
+   ================================ */
+
+.reader-search {
+  width: 100%;
+  box-sizing: border-box;
+
+  font-size: 0.95rem;
+  line-height: 1.2;
+
+  padding: 0.45rem 0.6rem;
+  margin: 0.5rem 0 0.75rem;
+
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #fff;
+
+  outline: none;
+}
+
+.reader-search:focus {
+  border-color: #8aa8ff;
+  box-shadow: 0 0 0 2px rgba(138, 168, 255, 0.2);
+}
+
+.reader-nav-footer {
+  margin-top: 1.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.reader-nav-explore {
+  display: block;
+  font-size: 0.9rem;
+  color: #666;
+  text-decoration: none;
+}
+
+.reader-nav-explore:hover {
+  text-decoration: underline;
+}

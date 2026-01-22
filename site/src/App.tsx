@@ -1,5 +1,6 @@
-import { Reader } from "./reader/Reader";
+
+import { AppRoutes } from "./routes";
 
 export default function App() {
-  return <Reader />;
+  return <AppRoutes />;
 }
