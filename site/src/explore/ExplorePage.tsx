@@ -34,7 +34,7 @@ const baseTerms = [
 
 export function ExplorePage() {
 
-  const textureTerms = motifStats.texture.map(t => t.term);
+  const textureTerms = (motifStats.texture as { term: string }[]).map(t => t.term);
   if (textureTerms.length === 0) {
     textureTerms.push(...baseTerms);
   }
@@ -47,7 +47,11 @@ export function ExplorePage() {
   const motif = motifStats.terms.find(m => m.term === activeMotif) ?? null;
 
   const poemsById = new Map(readingModel.linearPoems.map(p => [p.id, p]));
-  const poems = motif ? motif.poemIds.map(id => poemsById.get(id)).filter(Boolean) : [];
+  const poems = motif ? motif.poemIds
+                    .map(id => poemsById.get(id))
+                    .filter(Boolean)
+                    .map(p => ({ id: p!.id, title: p!.title }))
+                : [];
 
   return (
     <main className="explore-root">
