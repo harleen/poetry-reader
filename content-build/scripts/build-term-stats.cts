@@ -32,24 +32,25 @@ export function buildMotifStats(poems: Poem[]): MotifStats {
         const words = normalized.split(" ");
 
         for (const word of words) {
-        if (word.length < 3) continue;
-        if (STOPWORDS.has(word)) continue;
+            if (!word || word.trim().length === 0) continue;
+            if (word.length < 3) continue;
+            if (STOPWORDS.has(word)) continue;
 
-        if (!termMap.has(word)) {
-            termMap.set(word, {
-            totalCount: 0,
-            poemIds: new Set(),
-            perPoemCount: new Map(),
-            });
-        }
+            if (!termMap.has(word)) {
+                termMap.set(word, {
+                totalCount: 0,
+                poemIds: new Set(),
+                perPoemCount: new Map(),
+                });
+            }
 
-        const stats = termMap.get(word)!;
-        stats.totalCount += 1;
-        stats.poemIds.add(poem.id);
-        stats.perPoemCount.set(
-            poem.id,
-            (stats.perPoemCount.get(poem.id) ?? 0) + 1
-        );
+            const stats = termMap.get(word)!;
+            stats.totalCount += 1;
+            stats.poemIds.add(poem.id);
+            stats.perPoemCount.set(
+                poem.id,
+                (stats.perPoemCount.get(poem.id) ?? 0) + 1
+            );
         }
     }
 

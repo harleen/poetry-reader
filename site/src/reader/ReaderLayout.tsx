@@ -19,6 +19,7 @@ export function ReaderLayout({
   // Mobile-only nav state
   const [isNavOpen, setIsNavOpen] = useState(false);
 
+
   return (
     <>
       <div className="reader">

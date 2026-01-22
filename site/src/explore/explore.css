@@ -1,9 +1,13 @@
+/* ---------- Motifs layout ---------- */
+
 .motifs-page {
-  padding: 0rem 1rem;
+  padding: 0 1rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch; /* ← IMPORTANT */
 }
+
+/* ---------- Shared card surface ---------- */
 
 .explore-card {
   background: #fff;
@@ -14,15 +18,19 @@
 
   max-width: 720px;
   width: 100%;
-
   margin: 0 auto;
+
   text-align: center;
 }
 
+/* ---------- Intentional spacing ---------- */
+
 .explore-separator {
-  height: 4rem;          /* controls how much texture shows */
+  height: 3rem; /* slightly tighter */
   width: 100%;
 }
+
+/* ---------- Motifs ---------- */
 
 .motifs-heading {
   margin: 0 0 1.25rem;
@@ -42,9 +50,11 @@
   border: none;
   cursor: pointer;
   padding: 0;
+
   display: inline-flex;
   gap: 0.4rem;
   align-items: baseline;
+
   font-size: 0.95rem;
   color: #333;
 }
@@ -58,10 +68,11 @@
   color: #777;
 }
 
-.poems-region {
-  max-width: 720px;
-  margin: 3rem auto 0;
-  padding-top: 2rem;
+/* ---------- Results ---------- */
+
+.motif-results {
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 .motif-results-heading {
@@ -77,21 +88,6 @@
 }
 
 .motif-poem-list li {
-  margin-bottom: 0.5rem;
-}
-
-.motif-results {
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-.motif-results ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.motif-results li {
   margin-bottom: 0.75rem;
 }
 
@@ -107,4 +103,27 @@
 .motif-empty {
   color: #666;
   font-style: italic;
+}
+
+/* ---------- Mobile fixes ---------- */
+
+@media (max-width: 640px) {
+  .explore-card {
+    padding: 1.25rem;
+    border-radius: 12px;
+    text-align: left;
+  }
+
+  .motifs-row {
+    justify-content: flex-start;
+    gap: 0.5rem;
+  }
+
+  .motif-item {
+    font-size: 0.9rem;
+  }
+
+  .explore-separator {
+    height: 1.75rem;
+  }
 }
