@@ -2,7 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { readingModel } from "../generated/readingModel";
 import { ReaderPoem } from "../reader/ReaderPoem";
 import "./reader.css";
-import "./readerLink.css";
+import "./readerlink.css";
 
 export function SinglePoemPage() {
   const { id } = useParams<{ id: string }>();
