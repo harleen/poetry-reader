@@ -1,0 +1,20 @@
+.reader-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  padding: 1.25rem 1.5rem 0.75rem;
+  margin-bottom: 1.5rem;
+
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.reader-back-link:hover {
+  color: var(--accent-primary);
+  text-decoration: underline;
+}

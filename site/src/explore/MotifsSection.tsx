@@ -15,7 +15,7 @@ export function MotifsSection({
   return (
     <section className="motifs-page">
       <div className="motifs-card">
-        <h2 className="motifs-heading">Motifs</h2>
+        <h2 className="motifs-heading">R E C U R R I N G</h2>
 
         <div className="motifs-row">
           {motifs.map((motif) => {

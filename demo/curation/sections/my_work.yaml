@@ -1,0 +1,6 @@
+id: my_work
+title: My Poems
+
+poems:
+  - a-very-hungry-caterpillar.md
+  - poems-for-memorizing.md

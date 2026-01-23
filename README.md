@@ -1,8 +1,8 @@
-# poetry-reader
+# poetry-space
 
-A simple, poetry-first reading app built with React.
+A simple, poetry-first workshop app built with React.
 
-This repository contains the reader **engine only** — the part that displays poems and lets readers move through them one at a time.
+This repository contains the reader **engine only** — the part that displays poems, lets readers move through them one at a time and email feedback.
 
 Poems themselves and editorial curation live in private folders/repositories and are compiled into the reader at build time. A small demo is included so the reader works out of the box.
 
@@ -10,17 +10,20 @@ If you’d like to use this reader to put your own poems on the web, see **“Ad
 
 ## What it does
 
-- Displays one poem at a time
-- Preserves line breaks and spacing
-- Uses a quiet, book-like layout
-- Supports sections and ordering via simple files
-- Builds to a static site (no server required)
+Displays one poem at a time
+Preserves line breaks and spacing exactly
+Uses a quiet, book-like layout
+Supports sections and ordering via simple files
+Builds to a static site (no server required)
+Optionally supports email-based workshop feedback
 
 ## Included
 
-- A demo set of poems
-- A basic reader layout (navigation + poem view)
-- A build step that prepares poems for the reader
+A demo set of poems
+A basic reader layout (navigation + poem view)
+An explore view for browsing sections and motifs
+A build step that prepares poems for the reader
+A minimal, CSS-first design intended to stay out of the way
 
 ## Development
 
@@ -63,3 +66,12 @@ Your poems will appear in the reader layout.
 Step 6: You can add, remove, or reorder poems by editing the YAML files.
 No database or server is required.
 The reader is intentionally minimal so the poems remain the focus.
+
+## Private workshops and access control (optional)
+This reader is designed to be self-hosted. If you want to use it as a private workshop or studio (for example, invite-only readers or MFA workshops), you can place your deployed site behind an external access layer such as Cloudflare Access. This is not built into the app and requires no code changes.
+A typical setup looks like:
+- Deploy the reader as a static site
+- Attach a domain or subdomain you control
+- Place the site behind Cloudflare
+- Use Cloudflare Access (email one-time PIN) to restrict access
+This keeps the reader simple while allowing private, owned literary spaces.

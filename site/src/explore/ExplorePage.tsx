@@ -5,7 +5,9 @@ import { ExploreTexture } from "./ExploreTexture";
 import motifStats from "../generated/motifStats.json";
 import "./explore.css";
 import "./texture.css";
+import "../reader/readerlink.css"
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 // later this will come from texture stats
 const baseTerms = [
@@ -58,6 +60,12 @@ export function ExplorePage() {
 
         <ExploreTexture terms={repeatedTexture} />
 
+        <header className="explore-header">
+          <Link className="reader-back-link" to="/">
+            ← Back to Reader
+          </Link>
+        </header>
+
         <div className="explore-separator" />
 
         <div className="explore-card explore-content">
@@ -77,6 +85,7 @@ export function ExplorePage() {
                 activeMotif={activeMotif}
             />
         </div>
+
     </main>
   );
 }

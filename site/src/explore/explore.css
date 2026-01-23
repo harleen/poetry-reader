@@ -56,16 +56,22 @@
   align-items: baseline;
 
   font-size: 0.95rem;
-  color: #333;
+  color: var(--text-primary);
+  text-transform: uppercase;
+}
+
+.motif-count {
+  font-size: 0.8rem;
+  color: var(--text-faint);
 }
 
 .motif-item--active {
   text-decoration: underline;
 }
 
-.motif-count {
-  font-size: 0.8rem;
-  color: #777;
+.motif-item:hover {
+  color: var(--accent-primary);
+  text-decoration: underline;
 }
 
 /* ---------- Results ---------- */
@@ -92,16 +98,22 @@
 }
 
 .motif-results a {
-  color: #222;
+  color: var(--text-primary);
   text-decoration: none;
 }
 
 .motif-results a:hover {
+  color: var(--accent-primary);
   text-decoration: underline;
 }
 
+.motif-item--active {
+  text-decoration: underline;
+  color: var(--accent-primary);
+}
+
 .motif-empty {
-  color: #666;
+  color: var(--text-muted);
   font-style: italic;
 }
 

@@ -2,6 +2,7 @@ import { ReaderNav } from "./ReaderNav";
 import { ReaderPoem } from "./ReaderPoem";
 import type { Poem } from "../../../models/readingModel";
 import { useState } from "react";
+import { WorkshopPanel } from "./WorkshopPanel";
 
 type Props = {
   poems: Poem[];
@@ -35,6 +36,10 @@ export function ReaderLayout({
         </aside>
 
         <ReaderPoem poem={currentPoem} />
+
+        {currentPoem && (
+          <WorkshopPanel poemTitle={currentPoem.title} />
+        )}
       </div>
 
       {/* ⬅️ THIS MOVED OUT */}

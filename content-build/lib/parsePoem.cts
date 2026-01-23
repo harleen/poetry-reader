@@ -24,13 +24,17 @@ export function parsePoem(raw: string, relativePath: string): ParsedPoem {
 
           themes:
             Array.isArray(parsed.data.themes)
-              ? parsed.data.themes.filter((v: unknown): v is string => typeof v === "string")
+              ? parsed.data.themes.filter(
+                  (v: unknown): v is string => typeof v === "string"
+                )
               : undefined,
 
           motifs:
             Array.isArray(parsed.data.motifs)
-              ? parsed.data.motifs.filter((v): v is string => typeof v === "string")
-              : undefined
+              ? parsed.data.motifs.filter(
+                  (v: unknown): v is string => typeof v === "string"
+                )
+              : undefined,
         }
       : undefined;
 
@@ -43,12 +47,19 @@ export function parsePoem(raw: string, relativePath: string): ParsedPoem {
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trim();
+    if (line.length === 0) continue;
+
+    // H1 case
     if (line.startsWith("# ")) {
       title = line.replace(/^#\s+/, "").trim();
       titleLineIndex = i;
       break;
     }
-    if (line.length > 0) break;
+
+    // Plain text title case
+    title = line;
+    titleLineIndex = i;
+    break;
   }
 
   // -----------------------------------
@@ -60,19 +71,40 @@ export function parsePoem(raw: string, relativePath: string): ParsedPoem {
       .split(/[\/\\]/)
       .pop()!
       .replace(/[-_]+/g, " ")
-      .replace(/\b\w/g, c => c.toUpperCase());
+      .replace(/\b\w/g, (c) => c.toUpperCase());
   }
 
   // -----------------------------------
-  // 4. Remove title heading from content
+  // 4. Remove duplicated title at top of body (comparison-only normalization)
   // -----------------------------------
-  const body =
-    titleLineIndex >= 0
-      ? lines.filter((_: string, i: number) => i !== titleLineIndex).join("\n")
-      : lines.join("\n");
+  let bodyLines =
+    titleLineIndex >= 0 ? lines.slice(titleLineIndex + 1) : [...lines];
+
+  // Normalize title ONLY for comparison (keep display title intact)
+  const normalizedTitleForCompare = title
+    .replace(/\s*\([^)]*\)\s*$/, "") // strip trailing (254), etc.
+    .toLowerCase();
+
+  if (bodyLines.length > 0) {
+    const normalizedFirstBodyLine = bodyLines[0]
+      .trim()
+      .replace(/\s*\([^)]*\)\s*$/, "") // strip (254)
+      .toLowerCase();
+
+    if (normalizedFirstBodyLine === normalizedTitleForCompare) {
+      bodyLines.shift();
+
+      // remove one blank line after duplicated title if present
+      if (bodyLines[0]?.trim() === "") {
+        bodyLines.shift();
+      }
+    }
+  }
+
+  const body = bodyLines.join("\n");
 
   return {
-    title,
+    title,                 // ← keeps (254)
     content: body.trimStart(),
     meta,
   };

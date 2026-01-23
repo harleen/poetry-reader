@@ -4,6 +4,7 @@ import * as path from "path";
 import { buildReadingModel } from "../lib/buildReadingModel.cts";
 import { buildSearchIndex } from "./build-search-index.cts";
 import { buildMotifStats } from "./build-term-stats.cts";
+import { BUILD_PATHS } from "../config/buildPaths.cts";
 
 // Build once
 const { readingModel, poems } = buildReadingModel();
@@ -15,7 +16,7 @@ const searchIndex = buildSearchIndex(poems);
 const motifStats = buildMotifStats(poems);
 
 // Output paths
-const OUT_DIR = path.resolve("site/src/generated");
+const OUT_DIR = path.resolve(BUILD_PATHS.generatedRoot);
 const READING_MODEL_FILE = path.join(OUT_DIR, "readingModel.ts");
 const SEARCH_INDEX_FILE = path.join(OUT_DIR, "searchIndex.json");
 const MOTIF_FILE = path.join(OUT_DIR, "motifStats.json");

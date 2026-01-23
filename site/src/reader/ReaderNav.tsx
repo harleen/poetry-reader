@@ -14,7 +14,7 @@ export function ReaderNav({ poems, currentId, onSelect }: Props) {
 
   return (
     <nav>
-      <h3>{isSearching ? "Results" : "Poems"}</h3>
+      <h3>{isSearching ? "RESULTS" : "POEMS"}</h3>
 
       <input
         className="reader-search"

@@ -2,7 +2,8 @@
   "name": "poetry-reader",
   "private": true,
   "scripts": {
-    "build:content": "npx ts-node --project tsconfig.build.json content-build/scripts/build-reading-model.cts",
+    "clean:content": "npx ts-node --project tsconfig.build.json content-build/scripts/clean-generated.cts",
+    "build:content": "npm run clean:content && npx ts-node --project tsconfig.build.json content-build/scripts/build-reading-model.cts",
     "dev": "npm run build:content && cd site && npm run dev",
     "build": "npm run build:content && cd site && npm run build"
   },

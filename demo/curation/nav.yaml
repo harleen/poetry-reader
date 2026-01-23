@@ -1,4 +1,6 @@
 sections:
-  - id: demo
-    title: Demo Section
+  - id: pubic_domain
+    title: Nineteenth Century Poetry
+  - id: my_work
+    title: My Poems
 
