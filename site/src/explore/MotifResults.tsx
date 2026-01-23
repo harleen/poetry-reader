@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 type Props = {
   poems: { id: string; title: string }[];
   activeMotif: string | null;
@@ -20,14 +22,7 @@ export function MotifResults({ poems, activeMotif }: Props) {
             <ul className="motif-poem-list">
             {poems.map((poem) => (
                 <li key={poem.id}>
-                <a
-                    href={`./poem/${poem.id}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="motif-poem-link"
-                >
-                    {poem.title}
-                </a>
+                <Link to={`/poem/${poem.id}`} className="motif-poem-link">{poem.title}</Link>
                 </li>
             ))}
             </ul>
