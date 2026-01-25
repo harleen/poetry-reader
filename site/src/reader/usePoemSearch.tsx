@@ -1,10 +1,11 @@
 import { useMemo, useState } from "react";
-import searchIndex from "../generated/searchIndex.json";
+import type { SearchIndex } from "../models/searchModel";
 import type { Poem } from "../models/readingModel";
 
 export function usePoemSearch(
   poemIds: string[],
-  poemsById: Record<string, Poem>
+  poemsById: Record<string, Poem>,
+  searchIndex: SearchIndex
 ) {
   const [query, setQuery] = useState("");
 

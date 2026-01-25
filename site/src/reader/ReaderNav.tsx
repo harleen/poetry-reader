@@ -1,10 +1,12 @@
 import type { Poem, Section } from "../models/readingModel";
+import type { SearchIndex } from "../models/searchModel";
 import { usePoemSearch } from "./usePoemSearch";
 import { Link } from "react-router-dom";
 
 type Props = {
   sections: Section[];
   poemsById: Record<string, Poem>;
+  searchIndex: SearchIndex
   currentId?: string;
   onSelect: (id: string) => void;
 };
@@ -12,6 +14,7 @@ type Props = {
 export function ReaderNav({
   sections,
   poemsById,
+  searchIndex,
   currentId,
   onSelect,
 }: Props) {
@@ -19,7 +22,7 @@ export function ReaderNav({
   const allPoemIds = sections.flatMap((s) => s.poemIds);
 
   const { query, setQuery, results, isSearching } =
-    usePoemSearch(allPoemIds, poemsById);
+    usePoemSearch(allPoemIds, poemsById, searchIndex);
 
   return (
     <nav>

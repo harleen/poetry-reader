@@ -128,10 +128,16 @@
   white-space: pre-wrap;
   font-family: inherit;
 
-  font-size: 0.95rem;
+  font-size: 1.10rem;
   line-height: 1.6;
 
   margin: 0;
+}
+
+.translation-reader pre,
+.translation-grid pre {
+  font-size: 1.0rem;     /* vs 1.05–1.15 for poems */
+  line-height: 1.55;     /* vs 1.6–1.7 */
 }
 
 /* stanza spacing */

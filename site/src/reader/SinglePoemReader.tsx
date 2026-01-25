@@ -1,11 +1,15 @@
 import { useParams, Link } from "react-router-dom";
-import { readingModel } from "../generated/readingModel";
+import type { ReadingModel } from "../models/readingModel";
 import { ReaderPoem } from "../reader/ReaderPoem";
+import { TranslationReader } from "./TranslationReader";
 import "./reader.css";
 import "./readerlink.css";
-import { TranslationReader } from "./TranslationReader";
 
-export function SinglePoemPage() {
+type Props = {
+  readingModel: ReadingModel;
+};
+
+export function SinglePoemPage({ readingModel }: Props) {
   const { id } = useParams<{ id: string }>();
   if (!id) return null;
 
@@ -15,11 +19,15 @@ export function SinglePoemPage() {
   return (
     <main className="single-poem">
       <header className="single-poem-header">
-        <Link to="/" className="reader-back-link">← Back to Reader</Link>
+       <Link className="reader-back-link" to="/explore">
+          ← Back to Explore
+        </Link>
       </header>
 
       {poem.kind === "poem" && <ReaderPoem poem={poem} />}
-      {poem.kind === "translation" && <TranslationReader poem={poem} />}
+      {poem.kind === "translation" && (
+        <TranslationReader poem={poem} />
+      )}
     </main>
   );
 }

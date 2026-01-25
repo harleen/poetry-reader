@@ -4,10 +4,12 @@ import type { Poem, Section } from "../models/readingModel";
 import { useState } from "react";
 import { WorkshopPanel } from "./WorkshopPanel";
 import { TranslationReader } from "./TranslationReader";
+import type { SearchIndex } from "../models/searchModel";
 
 type Props = {
   poemsById: Record<string, Poem>;
   sections: Section[];
+  searchIndex: SearchIndex;
   currentPoem: Poem | null;
   currentId?: string;
   selectPoem: (id: string) => void;
@@ -16,6 +18,7 @@ type Props = {
 export function ReaderLayout({
   poemsById,
   sections,
+  searchIndex,
   currentPoem,
   currentId,
   selectPoem,
@@ -31,6 +34,7 @@ export function ReaderLayout({
           <ReaderNav
             poemsById={poemsById}
             sections={sections}
+            searchIndex={searchIndex}
             currentId={currentId}
             onSelect={(id) => {
               selectPoem(id);

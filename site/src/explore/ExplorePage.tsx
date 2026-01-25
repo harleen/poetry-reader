@@ -1,14 +1,24 @@
 import { MotifsSection } from "./MotifsSection";
 import { MotifResults } from "./MotifResults";
-import { readingModel } from "../generated/readingModel";
+import type { MotifTerm } from "../models/motifModel";
 import { ExploreTexture } from "./ExploreTexture";
-import motifStats from "../generated/motifStats.json";
+import type { Poem, ReadingModel } from "../models/readingModel";
 import "./explore.css";
 import "./texture.css";
 import "../reader/readerlink.css"
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import type { Poem } from "../models/readingModel";
+
+
+type MotifStats = {
+  terms: MotifTerm[];
+  texture: { term: string }[];
+};
+
+type Props = {
+  readingModel: ReadingModel;
+  motifStats: MotifStats;
+};
 
 // later this will come from texture stats
 const baseTerms = [
@@ -35,7 +45,7 @@ const baseTerms = [
   "time",
 ];
 
-export function ExplorePage() {
+export function ExplorePage({ readingModel, motifStats }: Props) {
 
   const textureTerms = (motifStats.texture as { term: string }[]).map(t => t.term);
   if (textureTerms.length === 0) {
