@@ -5,12 +5,13 @@
     "clean:content": "npx ts-node --project tsconfig.build.json content-build/scripts/clean-generated.cts",
     "build:content": "npm run clean:content && npx ts-node --project tsconfig.build.json content-build/scripts/build-reading-model.cts",
     "dev": "npm run build:content && cd site && npm run dev",
-    "build": "npm run build:content && cd site && npm run build"
+    "build": "npm run build:content && cd site && npm run build",
+    "build:site": "npm run build:content && cd site && npm run build",
+    "build:lib": "vite build --config vite.lib.config.ts"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
-    "js-yaml": "^4.1.1",
-    "react-router-dom": "^7.12.0"
+    "js-yaml": "^4.1.1"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",

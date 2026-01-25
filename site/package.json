@@ -1,5 +1,5 @@
 {
-  "name": "poetry-reader",
+  "name": "poetry-reader-site",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,11 +8,6 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
-  },
-  "main": "dist/poetry-reader.js",
-  "module": "dist/poetry-reader.js",
-  "exports": {
-    ".": "./dist/poetry-reader.js"
   },
   "dependencies": {
     "react": "^19.2.0",
