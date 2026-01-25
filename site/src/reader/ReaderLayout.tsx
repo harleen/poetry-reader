@@ -1,21 +1,21 @@
 import { ReaderNav } from "./ReaderNav";
 import { ReaderPoem } from "./ReaderPoem";
-import type { Poem } from "../models/readingModel";
+import type { Poem, Section } from "../models/readingModel";
 import { useState } from "react";
 import { WorkshopPanel } from "./WorkshopPanel";
 import { TranslationReader } from "./TranslationReader";
 
 type Props = {
-  poemIds: string[];
   poemsById: Record<string, Poem>;
+  sections: Section[];
   currentPoem: Poem | null;
   currentId?: string;
   selectPoem: (id: string) => void;
 };
 
 export function ReaderLayout({
-  poemIds,
   poemsById,
+  sections,
   currentPoem,
   currentId,
   selectPoem,
@@ -29,8 +29,8 @@ export function ReaderLayout({
       <div className="reader">
         <aside className={`reader-nav ${isNavOpen ? "reader-nav--open" : ""}`}>
           <ReaderNav
-            poemIds={poemIds}
             poemsById={poemsById}
+            sections={sections}
             currentId={currentId}
             onSelect={(id) => {
               selectPoem(id);

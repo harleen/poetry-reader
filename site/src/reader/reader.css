@@ -61,6 +61,22 @@
   font-weight: 500;
 }
 
+.reader-nav-section {
+  margin-top: 1.25rem;
+}
+
+.reader-nav-section-title {
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.reader-nav-section .reader-nav-list {
+  margin-left: 0.75rem;
+}
+
 /* ================================
    Mobile Nav Toggle
    ================================ */
@@ -112,7 +128,7 @@
   white-space: pre-wrap;
   font-family: inherit;
 
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   line-height: 1.7;
 
   margin: 0;

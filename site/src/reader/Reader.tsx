@@ -12,7 +12,7 @@ export function Reader() {
 
   return (
     <ReaderLayout
-      poemIds={readingModel.linearOrder}
+      sections={readingModel.sections}
       poemsById={readingModel.poemsById}
       currentId={currentId}
       currentPoem={currentPoem}
