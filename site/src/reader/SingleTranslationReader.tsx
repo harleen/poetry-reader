@@ -1,25 +1,29 @@
 import { useParams, Link } from "react-router-dom";
 import { readingModel } from "../generated/readingModel";
-import { ReaderPoem } from "../reader/ReaderPoem";
+import { TranslationReader } from "../reader/TranslationReader";
 import "./reader.css";
 import "./readerlink.css";
-import { TranslationReader } from "./TranslationReader";
 
-export function SinglePoemPage() {
+export function SingleTranslationPage() {
   const { id } = useParams<{ id: string }>();
+
   if (!id) return null;
 
+  // 🔑 Direct lookup, no searching
   const poem = readingModel.poemsById[id];
-  if (!poem) return null;
+
+  // Guard: must exist and must be a translation
+  if (!poem || poem.kind !== "translation") return null;
 
   return (
     <main className="single-poem">
       <header className="single-poem-header">
-        <Link to="/" className="reader-back-link">← Back to Reader</Link>
+        <Link to="/" className="reader-back-link">
+          ← Back to Reader
+        </Link>
       </header>
 
-      {poem.kind === "poem" && <ReaderPoem poem={poem} />}
-      {poem.kind === "translation" && <TranslationReader poem={poem} />}
+      <TranslationReader poem={poem} />
     </main>
   );
 }

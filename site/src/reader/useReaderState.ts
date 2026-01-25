@@ -1,18 +1,25 @@
 import { useState } from "react";
-import type { ReadingModel } from "../../../models/readingModel";
+import type { ReadingModel } from "../models/readingModel";
 
 export function useReaderState(model: ReadingModel) {
-  const [currentId, setCurrentId] = useState(
-    model.linearPoems[0]?.id
+  // Initial selection: first poem id in reading order
+  const [currentId, setCurrentId] = useState<string | undefined>(
+    model.linearOrder[0]
   );
 
+  // Lookup poem by id 
   const currentPoem =
-    model.linearPoems.find(p => p.id === currentId) ?? null;
+    currentId ? model.poemsById[currentId] ?? null : null;
 
   return {
-    poems: model.linearPoems,
+    // For navigation: pass IDs, not poems
+    poems: model.linearOrder,
+
+    // For rendering
     currentPoem,
     currentId,
+
+    // Selection
     selectPoem: setCurrentId,
   };
 }

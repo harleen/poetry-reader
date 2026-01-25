@@ -1,4 +1,4 @@
-POEMS FOR MEMORIZING
+Poems for Memorizing
 
 It's late February, and both cottonwoods have sprouted buds. The woodpeckers who nest inside are surprisingly aggressive toward the scrub jays these days; I expect a baby in spring. 
 

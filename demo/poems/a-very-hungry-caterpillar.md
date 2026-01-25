@@ -1,4 +1,4 @@
-A VERY HUNGRY CATERPILLAR
+A Very Hungry Caterpillar
 
 I am pouring myself in.
 

@@ -1,18 +1,21 @@
 import { ReaderNav } from "./ReaderNav";
 import { ReaderPoem } from "./ReaderPoem";
-import type { Poem } from "../../../models/readingModel";
+import type { Poem } from "../models/readingModel";
 import { useState } from "react";
 import { WorkshopPanel } from "./WorkshopPanel";
+import { TranslationReader } from "./TranslationReader";
 
 type Props = {
-  poems: Poem[];
+  poemIds: string[];
+  poemsById: Record<string, Poem>;
   currentPoem: Poem | null;
-  currentId: string | undefined;
+  currentId?: string;
   selectPoem: (id: string) => void;
 };
 
 export function ReaderLayout({
-  poems,
+  poemIds,
+  poemsById,
   currentPoem,
   currentId,
   selectPoem,
@@ -26,7 +29,8 @@ export function ReaderLayout({
       <div className="reader">
         <aside className={`reader-nav ${isNavOpen ? "reader-nav--open" : ""}`}>
           <ReaderNav
-            poems={poems}
+            poemIds={poemIds}
+            poemsById={poemsById}
             currentId={currentId}
             onSelect={(id) => {
               selectPoem(id);
@@ -35,14 +39,19 @@ export function ReaderLayout({
           />
         </aside>
 
-        <ReaderPoem poem={currentPoem} />
+       {currentPoem?.kind === "poem" && (
+          <ReaderPoem poem={currentPoem} />
+        )}
+
+        {currentPoem?.kind === "translation" && (
+          <TranslationReader poem={currentPoem} />
+        )}
 
         {currentPoem && (
           <WorkshopPanel poemTitle={currentPoem.title} />
         )}
       </div>
 
-      {/* ⬅️ THIS MOVED OUT */}
       <button
         className="mobile-nav-toggle"
         onClick={() => setIsNavOpen((open) => !open)}

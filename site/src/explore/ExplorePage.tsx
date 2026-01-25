@@ -8,6 +8,7 @@ import "./texture.css";
 import "../reader/readerlink.css"
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import type { Poem } from "../models/readingModel";
 
 // later this will come from texture stats
 const baseTerms = [
@@ -48,12 +49,15 @@ export function ExplorePage() {
 
   const motif = motifStats.terms.find(m => m.term === activeMotif) ?? null;
 
-  const poemsById = new Map(readingModel.linearPoems.map(p => [p.id, p]));
-  const poems = motif ? motif.poemIds
-                    .map(id => poemsById.get(id))
-                    .filter(Boolean)
-                    .map(p => ({ id: p!.id, title: p!.title }))
-                : [];
+  const poems = motif
+  ? motif.poemIds
+      .map(id => readingModel.poemsById[id])
+      .filter((p): p is Poem => Boolean(p))
+      .map(p => ({
+        id: p.id,
+        title: p.title,
+      }))
+  : [];
 
   return (
     <main className="explore-root">

@@ -3,4 +3,6 @@ sections:
     title: Nineteenth Century Poetry
   - id: my_work
     title: My Poems
+  - id: translations
+    title: Translations
 

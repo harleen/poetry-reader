@@ -1,6 +1,6 @@
-import type { Poem } from "../../../models/readingModel";
+import type { StandardPoem } from "../models/readingModel";
 
-export function ReaderPoem({ poem }: { poem: Poem | null }) {
+export function ReaderPoem({ poem }: { poem: StandardPoem | null }) {
   if (!poem) return null;
 
   return (

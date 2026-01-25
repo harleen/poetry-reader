@@ -1,12 +1,20 @@
 import { useMemo, useState } from "react";
 import searchIndex from "../generated/searchIndex.json";
-import type { Poem } from "../../../models/readingModel";
+import type { Poem } from "../models/readingModel";
 
-export function usePoemSearch(poems: Poem[]) {
+export function usePoemSearch(
+  poemIds: string[],
+  poemsById: Record<string, Poem>
+) {
   const [query, setQuery] = useState("");
 
   const results = useMemo(() => {
-    if (!query.trim()) return poems;
+    // No search → return poems in nav order
+    if (!query.trim()) {
+      return poemIds
+        .map((id) => poemsById[id])
+        .filter(Boolean);
+    }
 
     const q = query.toLowerCase();
 
@@ -18,8 +26,11 @@ export function usePoemSearch(poems: Poem[]) {
       )
       .map((p) => p.id);
 
-    return poems.filter((poem) => matchingIds.includes(poem.id));
-  }, [poems, query]);
+    return poemIds
+      .filter((id) => matchingIds.includes(id))
+      .map((id) => poemsById[id])
+      .filter(Boolean);
+  }, [query, poemIds, poemsById]);
 
   return {
     query,

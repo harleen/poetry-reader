@@ -1,0 +1,3 @@
+The poem proceeds by naming many forms of danger in order to arrive at its central claim about what is most dangerous. This repeated deferral creates a litany that structures the poem and sustains the reader’s attention as expectation builds toward the conclusion.
+
+Throughout, the poet takes traditional objects of lyric poetry—the sun, moon, night, the eye, the song—and inverts them. Instead of sources of beauty or illumination, they become sites of numbness, silence, or moral failure. This reversal gives the poem its force, using familiar poetic imagery to expose danger not as spectacle or violence, but as inner stagnation.

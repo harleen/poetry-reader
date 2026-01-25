@@ -4,7 +4,19 @@ import { useReaderState } from "./useReaderState";
 import "./reader.css";
 
 export function Reader() {
-  const readerState = useReaderState(readingModel);
+  const {
+    currentId,
+    currentPoem,
+    selectPoem,
+  } = useReaderState(readingModel);
 
-  return <ReaderLayout {...readerState} />;
+  return (
+    <ReaderLayout
+      poemIds={readingModel.linearOrder}
+      poemsById={readingModel.poemsById}
+      currentId={currentId}
+      currentPoem={currentPoem}
+      selectPoem={selectPoem}
+    />
+  );
 }

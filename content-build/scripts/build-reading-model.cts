@@ -27,8 +27,13 @@ fs.mkdirSync(OUT_DIR, { recursive: true });
 // Write reading model (TS)
 fs.writeFileSync(
   READING_MODEL_FILE,
-  `export const readingModel = ${JSON.stringify(readingModel, null, 2)};\n`
-);
+  `
+  import type { ReadingModel } from "../models/readingModel";
+
+  export const readingModel: ReadingModel =
+  ${JSON.stringify(readingModel, null, 2)};
+  `.trimStart()
+  );
 
 // Write search index (JSON)
 fs.writeFileSync(

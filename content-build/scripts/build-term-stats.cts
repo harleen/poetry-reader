@@ -2,7 +2,7 @@
 
 import { normalizeText } from "../lib/normalizeText.cts";
 import { STOPWORDS } from "../lib/stopwords.cts";
-import type { Poem } from "../../models/readingModel";
+import type { Poem } from "../../site/src/models/readingModel";
 
 type TermStats = {
   totalCount: number;
@@ -24,12 +24,29 @@ export type MotifStats = {
   }[];
 };
 
+function getPoemText(poem: Poem): string {
+  if (poem.kind === "poem") {
+    return poem.content;
+  }
+
+  return [
+    poem.original.content,
+    poem.translation.content,
+    poem.notes?.content,
+  ]
+    .filter(Boolean)
+    .join("\n");
+}
+
 export function buildMotifStats(poems: Poem[]): MotifStats {
     const termMap = new Map<string, TermStats>();
 
     for (const poem of poems) {
-        const normalized = normalizeText(poem.content);
+        const normalized = normalizeText(getPoemText(poem));
         const words = normalized.split(" ");
+
+        // 👉 ADD THIS HERE (resets for each poem)
+        const seenInPoem = new Set<string>();
 
         for (const word of words) {
             if (!word || word.trim().length === 0) continue;
@@ -37,20 +54,30 @@ export function buildMotifStats(poems: Poem[]): MotifStats {
             if (STOPWORDS.has(word)) continue;
 
             if (!termMap.has(word)) {
-                termMap.set(word, {
+            termMap.set(word, {
                 totalCount: 0,
                 poemIds: new Set(),
                 perPoemCount: new Map(),
-                });
+            });
             }
 
             const stats = termMap.get(word)!;
+
+            // always count raw frequency
             stats.totalCount += 1;
-            stats.poemIds.add(poem.id);
-            stats.perPoemCount.set(
-                poem.id,
-                (stats.perPoemCount.get(poem.id) ?? 0) + 1
-            );
+
+            // 👉 ONLY count poem-level membership once
+            if (!seenInPoem.has(word)) {
+                seenInPoem.add(word);
+                stats.poemIds.add(poem.id);
+                stats.perPoemCount.set(poem.id, 1);
+            } else {
+                // optional: still track per-poem frequency if you want it
+                stats.perPoemCount.set(
+                    poem.id,
+                    (stats.perPoemCount.get(poem.id) ?? 1) + 1
+                );
+            }
         }
     }
 

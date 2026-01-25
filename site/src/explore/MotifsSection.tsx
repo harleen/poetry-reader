@@ -1,4 +1,4 @@
-import type { MotifTerm } from "../../../models/motifModel";
+import type { MotifTerm } from "../models/motifModel";
 import "./explore.css";
 
 type Props = {

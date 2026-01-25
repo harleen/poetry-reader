@@ -1,5 +1,5 @@
 import * as matter from "gray-matter";
-import type { PoemMeta } from "../../models/readingModel";
+import type { PoemMeta } from "../../site/src/models/readingModel";
 
 export type ParsedPoem = {
   title: string;
@@ -104,7 +104,7 @@ export function parsePoem(raw: string, relativePath: string): ParsedPoem {
   const body = bodyLines.join("\n");
 
   return {
-    title,                 // ← keeps (254)
+    title,                 
     content: body.trimStart(),
     meta,
   };

@@ -1,16 +1,22 @@
-import type { Poem } from "../../../models/readingModel";
+import type { Poem } from "../models/readingModel";
 import { usePoemSearch } from "./usePoemSearch";
 import { Link } from "react-router-dom";
 
 type Props = {
-  poems: Poem[];
+  poemIds: string[];
+  poemsById: Record<string, Poem>;
   currentId?: string;
   onSelect: (id: string) => void;
 };
 
-export function ReaderNav({ poems, currentId, onSelect }: Props) {
+export function ReaderNav({
+  poemIds,
+  poemsById,
+  currentId,
+  onSelect,
+}: Props) {
   const { query, setQuery, results, isSearching } =
-    usePoemSearch(poems);
+    usePoemSearch(poemIds, poemsById);
 
   return (
     <nav>
@@ -49,7 +55,9 @@ export function ReaderNav({ poems, currentId, onSelect }: Props) {
       )}
 
       <div className="reader-nav-footer">
-        <Link className="reader-nav-explore" to="/explore">EXPLORE</Link>
+        <Link className="reader-nav-explore" to="/explore">
+          EXPLORE
+        </Link>
       </div>
     </nav>
   );

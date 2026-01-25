@@ -16,6 +16,7 @@ export interface SectionManifest {
   id: string;
   title: string;
   description?: string;
+  type?: "standard" | "translation"
   poems: string[]; // Paths relative to poems repo root
 }
 
@@ -25,7 +26,8 @@ export interface SectionManifest {
 // These represent the canonical reading model
 // consumed by the reader UI.
 
-export interface Poem {
+export interface BasePoem {
+  kind: "poem" | "translation";
   /**
    * Stable identifier derived from poem path.
    * Must remain consistent across builds as long
@@ -43,6 +45,10 @@ export interface Poem {
    * Used for traceability and debugging, not rendering.
    */
   path: string;
+}
+
+export interface StandardPoem extends BasePoem {
+  kind: "poem";
 
   /**
    * Full poem text with original lineation preserved.
@@ -82,10 +88,37 @@ export type PoemMeta = {
   motifs?: string[];
 }
 
+export type TranslationMeta = {
+  translator?: string;
+  sourceLanguage?: string;
+  sourceAuthor?: string;
+};
+
+export interface TranslationPoem extends BasePoem {
+  kind: "translation";
+
+  original: {
+    content: string
+    meta?: TranslationMeta
+  }
+
+  translation: {
+    content: string
+    meta?: TranslationMeta
+  }
+
+  notes?: {
+    content: string
+    meta?: TranslationMeta
+  }
+}
+
+export type Poem = StandardPoem | TranslationPoem;
+
 export interface Section {
   id: string;
   title: string;
-  poems: Poem[];
+  poemIds: string[];
 }
 
 export interface ReadingModel {
@@ -95,8 +128,12 @@ export interface ReadingModel {
   sections: Section[];
 
   /**
-   * Linearized poem order for next/previous navigation.
-   * Order is derived from section order + poem order.
+   * Poems indexed by ID for quick lookup.
    */
-  linearPoems: Poem[];
+  poemsById: Record<string, Poem>;
+
+  /**  
+   * Linear array of poem IDs for next/previous navigation.
+   */
+  linearOrder: string[];
 }
