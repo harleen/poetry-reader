@@ -14,8 +14,12 @@ const hasHttps =
   fs.existsSync(certPath) && fs.existsSync(keyPath);
 
 export default defineConfig({
+  // Needed for GitHub Pages / demo site
   base: "/poetry-reader/",
+
   plugins: [react()],
+
+  // Dev server only
   server: hasHttps
     ? {
         https: {
@@ -24,4 +28,16 @@ export default defineConfig({
         },
       }
     : undefined,
+
+  // Library build (used by your private site)
+  build: {
+    lib: {
+      entry: "src/index.ts",
+      name: "PoetryReader",
+      fileName: "poetry-reader",
+    },
+    rollupOptions: {
+      external: ["react", "react-dom", "react-router-dom"],
+    },
+  },
 });
