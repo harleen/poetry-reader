@@ -11,7 +11,7 @@
       "import": "./lib/poetry-reader.js",
       "require": "./lib/poetry-reader.umd.cjs"
     },
-    "./style.css": "./lib/style.css"
+    "./style.css": "./lib/poetry-reader.css"
   },
   "files": [
     "lib"
@@ -29,8 +29,12 @@
   "dependencies": {
     "gray-matter": "^4.0.3",
     "js-yaml": "^4.1.1",
-    "react-markdown": "^10.1.0",
-    "react-router-dom": "^6.x"
+    "react-markdown": "^10.1.0"
+  },
+  "peerDependencies": {
+    "react": "^18 || ^19",
+    "react-dom": "^18 || ^19",
+    "react-router-dom": "^6"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",
