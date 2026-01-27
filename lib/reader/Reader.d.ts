@@ -4,6 +4,7 @@ import "./reader.css";
 type ReaderProps = {
     readingModel: ReadingModel;
     searchIndex: SearchIndex;
+    showWorkshop?: boolean;
 };
-export declare function Reader({ readingModel, searchIndex }: ReaderProps): import("react/jsx-runtime").JSX.Element;
+export declare function Reader({ readingModel, searchIndex, showWorkshop }: ReaderProps): import("react/jsx-runtime").JSX.Element;
 export {};

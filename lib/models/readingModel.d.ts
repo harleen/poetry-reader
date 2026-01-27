@@ -91,6 +91,8 @@ export interface Section {
     poemIds: string[];
 }
 export interface ReadingModel {
+    title?: string;
+    description?: string;
     /**
      * Poems grouped into curated sections.
      */

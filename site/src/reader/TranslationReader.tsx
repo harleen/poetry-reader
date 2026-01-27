@@ -1,4 +1,5 @@
 import type { TranslationPoem } from "../models/readingModel";
+import ReactMarkdown from "react-markdown";
 
 export function TranslationReader({ poem }: { poem: TranslationPoem }) {
   return (
@@ -17,7 +18,9 @@ export function TranslationReader({ poem }: { poem: TranslationPoem }) {
       {poem.notes && (
         <section className="translation-notes">
           <h3>Notes</h3>
-          <pre>{poem.notes.content}</pre>
+          <ReactMarkdown>
+            {poem.notes.content}
+          </ReactMarkdown>
         </section>
       )}
     </main>

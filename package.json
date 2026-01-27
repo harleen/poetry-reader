@@ -1,11 +1,9 @@
 {
   "name": "poetry-reader",
   "private": true,
-
   "main": "lib/poetry-reader.umd.js",
   "module": "lib/poetry-reader.mjs",
   "types": "lib/index.d.ts",
-
   "exports": {
     ".": {
       "import": "./lib/poetry-reader.mjs",
@@ -14,28 +12,24 @@
     },
     "./style.css": "./lib/poetry-reader.css"
   },
-
-  "files": ["lib"],
-
- "scripts": {
+  "files": [
+    "lib"
+  ],
+  "scripts": {
     "clean:content": "npx ts-node --project tsconfig.build.json content-build/scripts/clean-generated.cts",
     "build:content": "npm run clean:content && npx ts-node --project tsconfig.build.json content-build/scripts/build-reading-model.cts",
-
     "dev": "npm run build:content && cd site && npm run dev",
     "build": "npm run build:content && cd site && npm run build",
     "build:site": "npm run build:content && cd site && npm run build",
-
     "build:lib:js": "vite build --config vite.lib.config.ts",
     "build:lib:types": "tsc --project tsconfig.lib.json",
-
     "build:lib": "npm run build:lib:js && npm run build:lib:types"
   },
-
   "dependencies": {
     "gray-matter": "^4.0.3",
-    "js-yaml": "^4.1.1"
+    "js-yaml": "^4.1.1",
+    "react-markdown": "^10.1.0"
   },
-
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^25.0.9",

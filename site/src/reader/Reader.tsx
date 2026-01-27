@@ -7,9 +7,10 @@ import "./reader.css";
 type ReaderProps = {
   readingModel: ReadingModel;
   searchIndex: SearchIndex;
+  showWorkshop?: boolean;
 };
 
-export function Reader({ readingModel, searchIndex }: ReaderProps) {
+export function Reader({ readingModel, searchIndex, showWorkshop = true }: ReaderProps) {
 
   if (!readingModel) {
     throw new Error("Reader requires a readingModel prop");
@@ -34,7 +35,7 @@ export function Reader({ readingModel, searchIndex }: ReaderProps) {
       currentId={currentId}
       currentPoem={currentPoem}
       selectPoem={selectPoem}
-      showWorkshop={true}
+      showWorkshop={showWorkshop}
     />
   );
 }
