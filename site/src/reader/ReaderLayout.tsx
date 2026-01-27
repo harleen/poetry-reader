@@ -16,6 +16,7 @@ type Props = {
   currentId?: string;
   selectPoem: (id: string) => void;
   showWorkshop?: boolean;
+  showExplore?: boolean;
 };
 
 export function ReaderLayout({
@@ -27,7 +28,8 @@ export function ReaderLayout({
   currentPoem,
   currentId,
   selectPoem,
-  showWorkshop = false,
+  showWorkshop = true,
+  showExplore = true,
 }: Props) {
   // Mobile-only nav state
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -54,6 +56,7 @@ export function ReaderLayout({
               selectPoem(id);
               setIsNavOpen(false);
             }}
+            showExplore={showExplore}
           />
         </aside>
 

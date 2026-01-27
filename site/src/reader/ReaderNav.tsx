@@ -9,6 +9,7 @@ type Props = {
   searchIndex: SearchIndex
   currentId?: string;
   onSelect: (id: string) => void;
+  showExplore?: boolean;
 };
 
 export function ReaderNav({
@@ -17,6 +18,7 @@ export function ReaderNav({
   searchIndex,
   currentId,
   onSelect,
+  showExplore = true,
 }: Props) {
   // Flatten poem ids ONLY for search
   const allPoemIds = sections.flatMap((s) => s.poemIds);
@@ -97,9 +99,11 @@ export function ReaderNav({
 
       <div className="reader-nav-footer">
         <div className="reader-meta">
-          <Link className="reader-meta-link" to="/explore">
-            Explore Patterns in this collection
-          </Link>
+          {showExplore && (
+            <Link className="reader-meta-link" to="/explore">
+              Explore Patterns in this collection
+            </Link>
+          )}
         </div>
       </div>
     </nav>

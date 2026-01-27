@@ -8,9 +8,10 @@ type ReaderProps = {
   readingModel: ReadingModel;
   searchIndex: SearchIndex;
   showWorkshop?: boolean;
+  showExplore?: boolean;
 };
 
-export function Reader({ readingModel, searchIndex, showWorkshop = true }: ReaderProps) {
+export function Reader({ readingModel, searchIndex, showWorkshop = true, showExplore = true }: ReaderProps) {
 
   if (!readingModel) {
     throw new Error("Reader requires a readingModel prop");
@@ -36,6 +37,7 @@ export function Reader({ readingModel, searchIndex, showWorkshop = true }: Reade
       currentPoem={currentPoem}
       selectPoem={selectPoem}
       showWorkshop={showWorkshop}
+      showExplore={showExplore}
     />
   );
 }
