@@ -1,4 +1,6 @@
 export interface NavManifest {
+    title?: string;
+    description?: string;
     sections: {
         id: string;
         title: string;

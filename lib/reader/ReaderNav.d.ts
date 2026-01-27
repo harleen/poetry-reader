@@ -6,6 +6,7 @@ type Props = {
     searchIndex: SearchIndex;
     currentId?: string;
     onSelect: (id: string) => void;
+    showExplore?: boolean;
 };
-export declare function ReaderNav({ sections, poemsById, searchIndex, currentId, onSelect, }: Props): import("react/jsx-runtime").JSX.Element;
+export declare function ReaderNav({ sections, poemsById, searchIndex, currentId, onSelect, showExplore, }: Props): import("react/jsx-runtime").JSX.Element;
 export {};

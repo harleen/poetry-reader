@@ -4,11 +4,25 @@
 
 .reader {
   display: grid;
+
+  /* NEW: header row + content row */
+  grid-template-rows: auto 1fr;
+
+  /* existing columns */
   grid-template-columns: 240px minmax(0, 1fr) 280px;
+
   min-height: 100dvh;
 
   background: var(--surface-base);
   color: var(--text-primary);
+}
+
+.reader-header {
+  grid-column: 1 / -1;   /* ⬅️ span all columns */
+  grid-row: 1;
+  padding: 1.0rem;
+  background: var(--surface-panel);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 /* ================================
@@ -17,6 +31,7 @@
 
 .reader-nav {
   grid-column: 1;
+  grid-row: 2;
   width: 240px;
   padding: 1.5rem;
   font-size: 0.9rem;
@@ -118,6 +133,7 @@
 
 .reader-poem {
   grid-column: 2;
+  grid-row: 2;
   padding: 3rem 2rem;
   overflow-y: auto;
 
@@ -208,6 +224,7 @@
 
 .workshop-panel {
   grid-column: 3;
+  grid-row: 2;
 
   /* Give it more physical presence */
   padding: 3rem 2rem;

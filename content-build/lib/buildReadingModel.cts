@@ -83,7 +83,7 @@ export function buildReadingModel(): {
   }
 
   return {
-    readingModel: { sections, linearOrder, poemsById: poemsMap },
+    readingModel: { title: nav.title, description: nav.description, sections, linearOrder, poemsById: poemsMap },
     poems: allPoems,
   };
 }

@@ -10,6 +10,7 @@ type Props = {
     currentId?: string;
     selectPoem: (id: string) => void;
     showWorkshop?: boolean;
+    showExplore?: boolean;
 };
-export declare function ReaderLayout({ title, description, poemsById, sections, searchIndex, currentPoem, currentId, selectPoem, showWorkshop, }: Props): import("react/jsx-runtime").JSX.Element;
+export declare function ReaderLayout({ title, description, poemsById, sections, searchIndex, currentPoem, currentId, selectPoem, showWorkshop, showExplore, }: Props): import("react/jsx-runtime").JSX.Element;
 export {};

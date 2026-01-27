@@ -6,6 +6,8 @@
 // directly by the reader UI.
 
 export interface NavManifest {
+  title?: string;
+  description?: string;
   sections: {
     id: string;
     title: string;
