@@ -1,5 +1,5 @@
 import * as fs from "fs";
-import { BUILD_PATHS } from "../config/buildPaths.cts";
+import { BUILD_PATHS } from "../config/buildPaths.ts";
 
 console.log("🧹 CLEAN: starting");
 

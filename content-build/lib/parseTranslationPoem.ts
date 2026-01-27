@@ -1,6 +1,6 @@
 import * as path from "path";
 import * as fs from "fs";
-import * as matter from "gray-matter";
+import matter from "gray-matter";
 import { TranslationMeta } from "../../site/src/models/readingModel";
 
 export type ParsedTranslationPoem = {

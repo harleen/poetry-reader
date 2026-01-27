@@ -1,4 +1,4 @@
-import { fileExists } from './fs.cts';
+import { fileExists } from './fs.ts';
 
 export interface ContentRoots {
   mode: 'private' | 'demo';

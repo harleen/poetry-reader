@@ -1,6 +1,6 @@
-// src/scripts/buildSearchIndex.cts
+// src/scripts/buildSearchIndex.ts
 
-import { normalizeText } from "../lib/normalizeText.cts";
+import { normalizeText } from "../lib/normalizeText.ts";
 import type { Poem } from "../../site/src/models/readingModel";
 
 export type SearchIndex = {

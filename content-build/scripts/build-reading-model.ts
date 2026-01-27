@@ -1,10 +1,10 @@
 import * as fs from "fs";
 import * as path from "path";
 
-import { buildReadingModel } from "../lib/buildReadingModel.cts";
-import { buildSearchIndex } from "./build-search-index.cts";
-import { buildMotifStats } from "./build-term-stats.cts";
-import { BUILD_PATHS } from "../config/buildPaths.cts";
+import { buildReadingModel } from "../lib/buildReadingModel.ts";
+import { buildSearchIndex } from "./build-search-index.ts";
+import { buildMotifStats } from "./build-term-stats.ts";
+import { BUILD_PATHS } from "../config/buildPaths.ts";
 
 // Build once
 const { readingModel, poems } = buildReadingModel();

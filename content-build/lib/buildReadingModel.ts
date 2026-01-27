@@ -8,11 +8,11 @@ import type {
   TranslationPoem
 } from "../../site/src/models/readingModel";
 
-import { readYamlFile, readTextFile } from "./fs.cts";
-import { resolveContentRoots } from "./resolveContentRoots.cts";
-import { parsePoem } from "./parsePoem.cts";
-import { makePoemId } from "./poemId.cts";
-import { parseTranslationFolder } from "./parseTranslationPoem.cts";
+import { readYamlFile, readTextFile } from "./fs.ts";
+import { resolveContentRoots } from "./resolveContentRoots.ts";
+import { parsePoem } from "./parsePoem.ts";
+import { makePoemId } from "./poemId.ts";
+import { parseTranslationFolder } from "./parseTranslationPoem.ts";
 import * as path from "path";
 
 export function buildReadingModel(): {

@@ -1,7 +1,7 @@
-// content-build/scripts/buildMotifStats.cts
+// content-build/scripts/buildMotifStats.ts
 
-import { normalizeText } from "../lib/normalizeText.cts";
-import { STOPWORDS } from "../lib/stopwords.cts";
+import { normalizeText } from "../lib/normalizeText.ts";
+import { STOPWORDS } from "../lib/stopwords.ts";
 import type { Poem } from "../../site/src/models/readingModel";
 
 type TermStats = {

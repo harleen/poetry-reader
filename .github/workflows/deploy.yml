@@ -2,8 +2,7 @@ name: Deploy poetry reader
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
 
 permissions:
   contents: read
@@ -15,24 +14,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Node
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           cache: npm
 
       - name: Install dependencies (root)
-        run: npm install
+        run: npm ci
+
+      - name: Build poetry-reader library
+        run: npm run build:lib
 
       - name: Build reading model
         run: npm run build:content
 
       - name: Install dependencies (site)
         working-directory: site
-        run: npm install
+        run: npm ci
 
       - name: Build site
         working-directory: site
@@ -45,4 +45,3 @@ jobs:
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
-

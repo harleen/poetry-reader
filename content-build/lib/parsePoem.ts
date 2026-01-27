@@ -1,4 +1,4 @@
-import * as matter from "gray-matter";
+import matter from "gray-matter";
 import type { PoemMeta } from "../../site/src/models/readingModel";
 
 export type ParsedPoem = {
