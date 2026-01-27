@@ -10,8 +10,8 @@
   ],
   
   "scripts": {
-    "clean:content": "node --loader ts-node/esm content-build/scripts/clean-generated.cts",
-    "build:content": "npm run clean:content && node --loader ts-node/esm content-build/scripts/build-reading-model.cts",
+   "clean:content": "node --loader ts-node/esm --input-type=module content-build/scripts/clean-generated.cts",
+    "build:content": "npm run clean:content && node --loader ts-node/esm --input-type=module content-build/scripts/build-reading-model.cts",
     "dev": "npm run build:content && cd site && npm run dev",
     "build": "npm run build:content && cd site && npm run build",
     "build:site": "npm run build:content && cd site && npm run build",
