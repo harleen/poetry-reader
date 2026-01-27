@@ -11,7 +11,7 @@
       "import": "./lib/poetry-reader.js",
       "require": "./lib/poetry-reader.umd.cjs"
     },
-    "./css": "./lib/poetry-reader.css"
+    "./style.css": "./lib/style.css"
   },
   "files": [
     "lib"

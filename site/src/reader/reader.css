@@ -226,6 +226,81 @@
 }
 
 /* ================================
+   Translation
+   ================================ */
+
+/* Frame translations like a wide paper surface */
+.translation-poem {
+  background: var(--surface-paper);
+  border-left: 1px solid var(--border-subtle);
+  border-right: 1px solid var(--border-subtle);
+  /* mobile-first padding */
+  padding: 1.5rem 1rem;
+}
+
+/* Mobile-first: single column */
+.translation-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* Tablet and up: side-by-side */
+@media (min-width: 768px) {
+  .translation-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+  
+  .translation-poem {
+    padding: 2rem 2.5rem;
+  }
+}
+
+/* Desktop: more breathing room */
+@media (min-width: 1024px) {
+  .translation-grid {
+    gap: 4rem;
+  }
+  
+  .translation-poem {
+    padding: 3rem 4rem;
+  }
+}
+
+.translation-label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.translation-col pre {
+  white-space: pre-wrap;
+  font-family: inherit;
+  margin: 0;
+  line-height: 1.8;
+}
+
+.translation-notes {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.translation-notes h3 {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+/* ================================
    Workshop Panel
    ================================ */
 
@@ -312,7 +387,6 @@
   border-color: #3b82f6;        /* same blue as Send button */
   box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15);
 }
-
 
 /* ================================
    Mobile Layout
