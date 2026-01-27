@@ -90,8 +90,6 @@
   margin-top: auto;
   position: sticky;
   bottom: 0;
-
-  background: var(--surface-panel);
 }
 
 /* ================================
@@ -196,6 +194,7 @@
   text-decoration: none;
   font-style: italic;
   letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
 .reader-meta-link:hover {
