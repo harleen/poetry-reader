@@ -1,7 +1,6 @@
 # Private content (never committed)
 /poems/
 /curation/
-/lib
 
 #Generated Content
 site/src/generated/
