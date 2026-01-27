@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./reader.css"
 
 export function WorkshopPanel({ poemTitle }: { poemTitle?: string }) {
   const [text, setText] = useState("");

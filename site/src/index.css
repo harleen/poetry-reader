@@ -16,14 +16,12 @@ body {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
 
-  /* ✅ Reader becomes the site default */
-  background: #faf9f7;
-  color: #1f2933;
+  background: var(--surface-base);
+  color: var(--text-primary);
 }
 
 /* ===============================
    Global color language
-   (derived from Reader)
    =============================== */
 
 :root {
@@ -37,31 +35,32 @@ body {
   --accent-warm: #b95667;
 
   /* Surfaces */
-  --surface-base: #faf9f7;   /* reader mobile bg */
-  --surface-panel: #f7f6f4; /* reader nav bg */
+  --surface-base: #ffffff;   /* page background */
+  --surface-panel: #f7f6f4; /* nav / panels */
   --surface-paper: #ffffff; /* poem surface */
 
   /* Borders */
-  --border-subtle: #e0dedb;
+  --border-subtle: rgba(0, 0, 0, 0.08);
 
   /* Interaction */
   --hover-bg: rgba(0, 0, 0, 0.04);
 }
 
+/* ===============================
+   Dark mode (site-controlled)
+   =============================== */
+
 @media (prefers-color-scheme: dark) {
   :root {
-    /* Base surfaces */
     --surface-base: #121212;
     --surface-panel: #1e1e1e;
     --surface-paper: #121212;
 
-    /* Text */
     --text-primary: #e0e0e0;
     --text-muted: #aaa;
     --text-faint: #888;
 
-    /* Interaction */
-    --hover-bg: rgba(255, 255, 255, 0.05);
-    --active-accent: rgba(111, 191, 162, 0.25);
+    --border-subtle: rgba(255, 255, 255, 0.12);
+    --hover-bg: rgba(255, 255, 255, 0.06);
   }
 }

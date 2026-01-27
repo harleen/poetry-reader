@@ -1,5 +1,8 @@
+title: Poems
+description: Selected works and translations
+
 sections:
-  - id: pubic_domain
+  - id: public_domain
     title: Nineteenth Century Poetry
   - id: my_work
     title: My Poems

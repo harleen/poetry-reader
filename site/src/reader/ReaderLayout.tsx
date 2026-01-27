@@ -7,21 +7,27 @@ import { TranslationReader } from "./TranslationReader";
 import type { SearchIndex } from "../models/searchModel";
 
 type Props = {
+  title?: string;
+  description?: string;
   poemsById: Record<string, Poem>;
   sections: Section[];
   searchIndex: SearchIndex;
   currentPoem: Poem | null;
   currentId?: string;
   selectPoem: (id: string) => void;
+  showWorkshop?: boolean;
 };
 
 export function ReaderLayout({
+  title,
+  description,
   poemsById,
   sections,
   searchIndex,
   currentPoem,
   currentId,
   selectPoem,
+  showWorkshop = false,
 }: Props) {
   // Mobile-only nav state
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -30,6 +36,14 @@ export function ReaderLayout({
   return (
     <>
       <div className="reader">
+        {(title || description) && (
+          <header className="reader-header">
+            {title && <h1 className="reader-title">{title}</h1>}
+            {description && (
+              <p className="reader-description">{description}</p>
+            )}
+          </header>
+        )}
         <aside className={`reader-nav ${isNavOpen ? "reader-nav--open" : ""}`}>
           <ReaderNav
             poemsById={poemsById}
@@ -51,7 +65,7 @@ export function ReaderLayout({
           <TranslationReader poem={currentPoem} />
         )}
 
-        {currentPoem && (
+        {showWorkshop && currentPoem && (
           <WorkshopPanel poemTitle={currentPoem.title} />
         )}
       </div>

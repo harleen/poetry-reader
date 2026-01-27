@@ -26,7 +26,7 @@ export function ReaderNav({
 
   return (
     <nav>
-      <h3>{isSearching ? "RESULTS" : "POEMS"}</h3>
+      {isSearching && <h3>RESULTS</h3>}
 
       <input
         className="reader-search"
@@ -96,9 +96,11 @@ export function ReaderNav({
       )}
 
       <div className="reader-nav-footer">
-        <Link className="reader-nav-explore" to="/explore">
-          EXPLORE
-        </Link>
+        <div className="reader-meta">
+          <Link className="reader-meta-link" to="/explore">
+            Explore Patterns in this collection
+          </Link>
+        </div>
       </div>
     </nav>
   );

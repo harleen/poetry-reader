@@ -122,6 +122,11 @@ export interface Section {
 }
 
 export interface ReadingModel {
+
+  title?: string;
+  
+  description?: string;
+
   /**
    * Poems grouped into curated sections.
    */

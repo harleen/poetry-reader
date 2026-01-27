@@ -6,6 +6,9 @@
   display: grid;
   grid-template-columns: 240px minmax(0, 1fr) 280px;
   min-height: 100dvh;
+
+  background: var(--surface-base);
+  color: var(--text-primary);
 }
 
 /* ================================
@@ -17,12 +20,18 @@
   width: 240px;
   padding: 1.5rem;
   font-size: 0.9rem;
+
   background: var(--surface-panel);
   color: var(--text-muted);
   border-right: 1px solid var(--border-subtle);
 
+  /* NEW */
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow-y: auto;
+
   position: relative;
-  z-index: auto;
 }
 
 .reader-nav-list {
@@ -56,7 +65,7 @@
 }
 
 .reader-nav-item.active {
-  background: #e6e4e0;
+  background: var(--hover-bg);
   color: var(--accent-warm);
   font-weight: 500;
 }
@@ -77,6 +86,14 @@
   margin-left: 0.75rem;
 }
 
+.reader-nav-footer {
+  margin-top: auto;
+  position: sticky;
+  bottom: 0;
+
+  background: var(--surface-panel);
+}
+
 /* ================================
    Mobile Nav Toggle
    ================================ */
@@ -88,7 +105,7 @@
   left: 0;
   width: 100%;
 
-  background: #faf9f7;
+  background: var(--surface-panel);
   border: none;
   padding: 0.75rem 1rem;
 
@@ -98,13 +115,14 @@
 }
 
 /* ================================
-   Poem Area (Desktop)
+   Poem Area
    ================================ */
 
 .reader-poem {
   grid-column: 2;
   padding: 3rem 2rem;
   overflow-y: auto;
+
   background: var(--surface-paper);
   color: var(--text-primary);
 }
@@ -115,7 +133,7 @@
 }
 
 /* ================================
-   Poem Typography
+   Typography
    ================================ */
 
 .reader-poem h1 {
@@ -128,21 +146,9 @@
   white-space: pre-wrap;
   font-family: inherit;
 
-  font-size: 1.10rem;
+  font-size: 1.1rem;
   line-height: 1.6;
-
   margin: 0;
-}
-
-.translation-reader pre,
-.translation-grid pre {
-  font-size: 1.0rem;     /* vs 1.05–1.15 for poems */
-  line-height: 1.55;     /* vs 1.6–1.7 */
-}
-
-/* stanza spacing */
-.reader-poem pre p {
-  margin-bottom: 1.25rem;
 }
 
 /* ================================
@@ -160,128 +166,130 @@
   margin: 0.5rem 0 0.75rem;
 
   border-radius: 6px;
-  border: 1px solid #ccc;
-  background: #fff;
+  border: 1px solid var(--border-subtle);
 
+  background: var(--surface-paper);
+  color: var(--text-primary);
   outline: none;
 }
 
 .reader-search:focus {
-  border-color: #8aa8ff;
-  box-shadow: 0 0 0 2px rgba(138, 168, 255, 0.2);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px rgba(21, 120, 81, 0.2);
 }
 
-.reader-nav-footer {
-  margin-top: 1.5rem;
-  padding-top: 0.75rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
+/* Reader meta link (connections / motifs) */
+
+.reader-meta {
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+
+  border-top: 1px solid var(--border-subtle);
+
+  font-size: 1.0rem;          /* ⬅️ slightly bigger */
+  line-height: 1.4;
 }
 
-.reader-nav-explore {
-  display: block;
-  font-size: 0.9rem;
+/* Reader meta link */
+.reader-meta-link {
   color: var(--text-muted);
   text-decoration: none;
+  font-style: italic;
+  letter-spacing: 0.02em;
 }
 
-.reader-nav-explore:hover {
-  color: var(--accent-warm);
+.reader-meta-link:hover {
+  color: var(--text);
   text-decoration: underline;
 }
 
 /* ================================
-   Workshop Panel (Desktop)
+   Workshop Panel
    ================================ */
 
 .workshop-panel {
   grid-column: 3;
-  padding: 2.5rem 1.5rem;
-  font-size: 0.85rem;
+
+  /* Give it more physical presence */
+  padding: 3rem 2rem;
+
+  /* Slightly larger than body-small */
+  font-size: 0.95rem;
+  line-height: 1.6;
 
   background: var(--surface-panel);
   border-left: 1px solid var(--border-subtle);
-  color: var(--text-muted);
+
+  /* Lift contrast just a bit */
+  color: var(--text);
 }
 
-.workshop-panel h3 {
-  margin: 0 0 0.75rem;
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
-}
-
-.workshop-hint {
-  font-size: 0.8rem;
-  margin-bottom: 0.75rem;
-}
-
-.workshop-panel textarea {
-  width: 100%;
-  min-height: 8rem;
-  resize: vertical;
-
-  font-family: inherit;
-  font-size: 0.85rem;
-  line-height: 1.4;
-
-  padding: 0.5rem;
-  border-radius: 6px;
-  border: 1px solid var(--border-subtle);
-  background: var(--surface-paper);
-  color: var(--text-primary);
-}
-
+/* Workshop: Send notes button */
 .workshop-send {
   display: inline-block;
-  margin-top: 0.75rem;
+  margin-top: 1.25rem;
 
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
 
-  color: var(--accent-primary);
+  color: #ffffff;
   text-decoration: none;
+
+  border: 1px solid #3b82f6; /* calm blue */
+  border-radius: 6px;
+  padding: 0.5rem 0.9rem;
+
+  background: #3b82f6;
+  cursor: pointer;
 }
 
 .workshop-send:hover {
-  text-decoration: underline;
+  background: #2563eb;
+  border-color: #2563eb;
 }
 
-.workshop-send.disabled {
+/* Disabled state */
+.workshop-send.disabled,
+.workshop-send[aria-disabled="true"] {
+  color: #ccc;
+  border-color: #e5e7eb;
+  background: #f3f4f6;
+
+  cursor: default;
   pointer-events: none;
-  opacity: 0.4;
 }
 
-/* ================================
-   Translation Layout
-   ================================ */
+/* Workshop textarea */
+.workshop-panel textarea {
+  width: 100%;
+  min-height: 12rem;
 
-.translation-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  padding: 0.75rem 0.9rem;
+
+  font-family: inherit;
+  font-size: 0.95rem;
+  line-height: 1.6;
+
+  color: var(--text);
+  background: #ffffff;
+
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+
+  resize: vertical;
 }
 
-.translation-label {
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+.workshop-panel textarea::placeholder {
   color: var(--text-muted);
-  margin-bottom: 0.75rem;
 }
 
-.translation-notes {
-  margin-top: 3rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--border-subtle);
+.workshop-panel textarea:focus {
+  outline: none;
+  border-color: #3b82f6;        /* same blue as Send button */
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15);
 }
 
-/* Mobile: stack */
-@media (max-width: 768px) {
-  .translation-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-}
 
 /* ================================
    Mobile Layout
@@ -289,17 +297,11 @@
 
 @media (max-width: 768px) {
   .reader {
-    display: block; /* 🔑 turns OFF grid entirely */
+    display: block;
   }
 
   .mobile-nav-toggle {
     display: block;
-  }
-
-  .reader-poem {
-    padding-top: 3.5rem; /* makes room for Contents bar */
-    margin: 0;             
-    max-width: 100%;
   }
 
   .reader-nav {
@@ -310,8 +312,8 @@
     width: 100%;
     max-width: 320px;
 
-    background: #faf9f7;
-    border-right: 1px solid #e0dedb;
+    background: var(--surface-panel);
+    border-right: 1px solid var(--border-subtle);
 
     transform: translateX(-100%);
     transition: transform 0.25s ease;
@@ -323,21 +325,15 @@
   }
 
   .reader-poem {
-    padding: 1.5rem 1rem;
+    padding: 3.5rem 1rem 1.5rem;
   }
 
   .reader-poem-inner {
-    max-width: 100%;
     margin-left: 0;
   }
 
   .reader-poem h1 {
     font-size: 1.6rem;
-  }
-
-  .reader-poem pre {
-    font-size: 1.05rem;
-    line-height: 1.6;
   }
 
   .workshop-panel {
