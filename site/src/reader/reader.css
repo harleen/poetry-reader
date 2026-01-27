@@ -236,6 +236,7 @@
   border-right: 1px solid var(--border-subtle);
   /* mobile-first padding */
   padding: 1.5rem 1rem;
+  margin-top: 0;
 }
 
 /* Mobile-first: single column */
@@ -270,11 +271,12 @@
 }
 
 .translation-label {
-  font-size: 0.85rem;
+  font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--text-muted);
   margin-bottom: 1rem;
+  margin-top: 0;
   font-weight: 500;
 }
 
