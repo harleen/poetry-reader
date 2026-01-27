@@ -1,6 +1,8 @@
 {
-  "name": "poetry-reader",
-  "version": "0.0.0",
+  "name": "@harleenserai/poetry-reader",
+  "version": "0.1.0",
+  "license": "MIT",
+  "private": false,
   "type": "module",
   "main": "./lib/poetry-reader.umd.cjs",
   "module": "./lib/poetry-reader.js",
