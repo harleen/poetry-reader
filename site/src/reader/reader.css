@@ -20,9 +20,16 @@
 .reader-header {
   grid-column: 1 / -1;   /* ⬅️ span all columns */
   grid-row: 1;
-  padding: 1.0rem;
+  padding: 0.75rem 1.25rem 0.6rem;
   background: var(--surface-panel);
   border-bottom: 1px solid var(--border-subtle);
+}
+
+.reader-title {
+  font-size: 1.4rem;     /* down from poem h1 (2.2rem) */
+  font-weight: 500;
+  margin: 0 0 0.15rem;   /* very small gap */
+  line-height: 1.25;
 }
 
 /* ================================
