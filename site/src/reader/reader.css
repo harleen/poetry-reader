@@ -47,13 +47,7 @@
   color: var(--text-muted);
   border-right: 1px solid var(--border-subtle);
 
-  /* NEW */
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
   overflow-y: auto;
-
-  position: relative;
 }
 
 .reader-nav-list {
@@ -108,10 +102,11 @@
   margin-left: 0.75rem;
 }
 
-.reader-nav-footer {
-  margin-top: auto;
-  position: sticky;
-  bottom: 0;
+.reader-nav-description {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: var(--text-muted);
+  margin: 0.25rem 0 1rem;
 }
 
 /* ================================
@@ -120,9 +115,8 @@
 
 .mobile-nav-toggle {
   display: none;
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
   width: 100%;
 
   background: var(--surface-panel);
@@ -131,7 +125,26 @@
 
   font-size: 0.9rem;
   text-align: left;
-  z-index: 30;
+  z-index: 5;
+}
+
+.reader-nav-close {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .reader-nav-close {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem;
+
+    background: var(--surface-panel);
+    border: none;
+    border-bottom: 1px solid var(--border-subtle);
+
+    font-size: 0.9rem;
+    text-align: left;
+  }
 }
 
 /* ================================
@@ -141,7 +154,7 @@
 .reader-poem {
   grid-column: 2;
   grid-row: 2;
-  padding: 3rem 2rem;
+  padding: 1.5rem 1rem;
   overflow-y: auto;
 
   background: var(--surface-paper);
@@ -421,10 +434,6 @@
 
   .reader-nav--open {
     transform: translateX(0);
-  }
-
-  .reader-poem {
-    padding: 3.5rem 1rem 1.5rem;
   }
 
   .reader-poem-inner {

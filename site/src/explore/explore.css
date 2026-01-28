@@ -74,6 +74,27 @@
   text-decoration: underline;
 }
 
+.motif-poem-link {
+  background: none;
+  border: none;
+  padding: 0;
+
+  font: inherit;
+  color: var(--accent-primary, #2563eb);
+  text-decoration: underline;
+
+  cursor: pointer;
+}
+
+.motif-poem-link:hover {
+  text-decoration-thickness: 2px;
+}
+
+.motif-poem-link:focus-visible {
+  outline: 2px solid var(--accent-primary, #2563eb);
+  outline-offset: 2px;
+}
+
 /* ---------- Results ---------- */
 
 .motif-results {

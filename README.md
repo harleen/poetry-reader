@@ -43,17 +43,17 @@ You create: Poem files (.md or .txt) ; Section files (YAML) ; Navigation file (Y
 You run: Build step
 You host: Static poetry reader with your own content
 
-Step 1: Add your poem files
-Add your poems as .md or .txt files. 
-Line breaks and spacing are preserved exactly as written.
-Poems may optionally include front matter for metadata.
-The poem’s title is taken from the poem itself.
+Step 1: Add your poem files to content.
+- Create a folder called "content" inside the root of poetry-reader.
+- Inside Content folder you need a "curation" folder, and a "poems" or "translation" folder
+- Add your poems as .md or .txt files into the Poems folder. 
+Note: Line breaks and spacing are preserved exactly as written. Poems may optionally include front matter for metadata. The poem’s title is taken from the poem itself.
 
-Step 2: Create section files
-Create YAML files that group poems into sections and define their reading order.
+Step 2: Create a navigation file in curation folder.
+Create a navigation file that lists which sections appear in the reader. See example file at poetry-reader/demo/curation
 
-Step 3: Create a navigation file
-Create a navigation file that lists which sections appear in the reader.
+Step 3: Create section files
+Create YAML files that group poems into sections and define their reading order. See example file at poetry-reader/demo/curation
 
 Step 4: Build the reading model
 Run: npm run build:content
@@ -75,3 +75,7 @@ A typical setup looks like:
 - Place the site behind Cloudflare
 - Use Cloudflare Access (email one-time PIN) to restrict access
 This keeps the reader simple while allowing private, owned literary spaces.
+
+## Poetry-Reader NPM
+This UI component is also available as npm package. Lib is built using: npm run build:lib.
+It can be included as @harleenserai/poetry-reader.

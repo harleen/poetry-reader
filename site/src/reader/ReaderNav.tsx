@@ -1,15 +1,15 @@
 import type { Poem, Section } from "../models/readingModel";
 import type { SearchIndex } from "../models/searchModel";
 import { usePoemSearch } from "./usePoemSearch";
-import { Link } from "react-router-dom";
 
 type Props = {
   sections: Section[];
   poemsById: Record<string, Poem>;
   searchIndex: SearchIndex
   currentId?: string;
+  description?: string; 
   onSelect: (id: string) => void;
-  showExplore?: boolean;
+  onExplore?: () => void;
 };
 
 export function ReaderNav({
@@ -17,8 +17,9 @@ export function ReaderNav({
   poemsById,
   searchIndex,
   currentId,
+  description,
   onSelect,
-  showExplore = true,
+  onExplore,
 }: Props) {
   // Flatten poem ids ONLY for search
   const allPoemIds = sections.flatMap((s) => s.poemIds);
@@ -28,6 +29,13 @@ export function ReaderNav({
 
   return (
     <nav>
+
+      {description && !isSearching && (
+        <p className="reader-nav-description">
+          {description}
+        </p>
+      )}
+
       {isSearching && <h3>RESULTS</h3>}
 
       <input
@@ -97,15 +105,14 @@ export function ReaderNav({
         </div>
       )}
 
-      <div className="reader-nav-footer">
-        <div className="reader-meta">
-          {showExplore && (
-            <Link className="reader-meta-link" to="/explore">
-              Explore Patterns in this collection
-            </Link>
-          )}
-        </div>
+      <div className="reader-meta">
+        {onExplore && (
+          <button className="reader-nav-explore" onClick={onExplore}>
+            Explore motifs
+          </button>
+        )}
       </div>
+
     </nav>
   );
 }

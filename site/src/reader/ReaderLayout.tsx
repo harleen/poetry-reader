@@ -16,7 +16,7 @@ type Props = {
   currentId?: string;
   selectPoem: (id: string) => void;
   showWorkshop?: boolean;
-  showExplore?: boolean;
+  onExplore?: () => void;
 };
 
 export function ReaderLayout({
@@ -29,7 +29,7 @@ export function ReaderLayout({
   currentId,
   selectPoem,
   showWorkshop = true,
-  showExplore = true,
+  onExplore,
 }: Props) {
   // Mobile-only nav state
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -38,25 +38,31 @@ export function ReaderLayout({
   return (
     <>
       <div className="reader">
-        {(title || description) && (
+        {(title) && (
           <header className="reader-header">
             {title && <h1 className="reader-title">{title}</h1>}
-            {description && (
-              <p className="reader-description">{description}</p>
-            )}
           </header>
         )}
+
+        <button className="mobile-nav-toggle" onClick={() => setIsNavOpen((open) => !open)}>
+          CONTENTS
+        </button>
+
         <aside className={`reader-nav ${isNavOpen ? "reader-nav--open" : ""}`}>
+          <button className="reader-nav-close" onClick={() => setIsNavOpen(false)}>
+            CLOSE
+          </button>
           <ReaderNav
             poemsById={poemsById}
             sections={sections}
             searchIndex={searchIndex}
             currentId={currentId}
+            description={description}
             onSelect={(id) => {
               selectPoem(id);
               setIsNavOpen(false);
             }}
-            showExplore={showExplore}
+            onExplore={onExplore}
           />
         </aside>
 
@@ -72,13 +78,6 @@ export function ReaderLayout({
           <WorkshopPanel poemTitle={currentPoem.title} />
         )}
       </div>
-
-      <button
-        className="mobile-nav-toggle"
-        onClick={() => setIsNavOpen((open) => !open)}
-      >
-        {isNavOpen ? "CLOSE" : "CONTENTS"}
-      </button>
     </>
   );
 }

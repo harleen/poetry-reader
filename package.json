@@ -1,6 +1,6 @@
 {
   "name": "@harleenserai/poetry-reader",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "license": "MIT",
   "private": false,
   "type": "module",

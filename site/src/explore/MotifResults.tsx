@@ -1,11 +1,32 @@
-import { Link } from "react-router-dom";
+import type { ReadingModel } from "../models/readingModel";
+import type { MotifIndex } from "../models/motifModel";
 
 type Props = {
-  poems: { id: string; title: string }[];
+  readingModel: ReadingModel;
   activeMotif: string | null;
+  motifStats: MotifIndex;
+  onSelectPoem?: (id: string) => void;
 };
 
-export function MotifResults({ poems, activeMotif }: Props) {
+export function MotifResults({
+  readingModel,
+  activeMotif,
+  motifStats,
+  onSelectPoem,
+}: Props) {
+  // 1. Find the motif entry
+  const motifEntry = activeMotif
+    ? motifStats.terms.find((t) => t.term === activeMotif)
+    : null;
+
+  // 2. Resolve poem IDs → poem objects
+  const poems =
+    motifEntry
+      ? motifEntry.poemIds
+          .map((id) => readingModel.poemsById[id])
+          .filter(Boolean)
+      : [];
+
   return (
     <div className="motif-results">
       {activeMotif ? (
@@ -20,11 +41,16 @@ export function MotifResults({ poems, activeMotif }: Props) {
             </p>
           ) : (
             <ul className="motif-poem-list">
-            {poems.map((poem) => (
+              {poems.map((poem) => (
                 <li key={poem.id}>
-                <Link to={`/poem/${poem.id}`} className="motif-poem-link">{poem.title}</Link>
+                  <button
+                    className="motif-poem-link"
+                    onClick={() => onSelectPoem?.(poem.id)}
+                  >
+                    {poem.title}
+                  </button>
                 </li>
-            ))}
+              ))}
             </ul>
           )}
         </>

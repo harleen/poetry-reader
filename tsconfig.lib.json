@@ -17,6 +17,7 @@
   "include": [
     "site/src/index.ts",
     "site/src/reader/**/*",
+    "site/src/explore/**/*",
     "site/src/models/**/*"
 ]
 }

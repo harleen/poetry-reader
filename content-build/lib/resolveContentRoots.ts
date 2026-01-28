@@ -9,16 +9,16 @@ export interface ContentRoots {
 
 export function resolveContentRoots(): ContentRoots {
   const hasPrivateContent =
-    fileExists("poems") &&
-    fileExists("translations") &&
-    fileExists("curation");
+    (fileExists("content/poems") ||
+    fileExists("content/translations")) &&
+    fileExists("content/curation");
 
   if (hasPrivateContent) {
     return {
       mode: "private",
-      poemsRoot: "poems",
-      translationsRoot: "translations",
-      curationRoot: "curation",
+      poemsRoot: "content/poems",
+      translationsRoot: "content/translations",
+      curationRoot: "content/curation",
     };
   }
 

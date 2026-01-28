@@ -1,10 +1,10 @@
 // Reader entry
-export { Reader } from "./reader/Reader";
-
-// Pages 
+export { Reader } from "./reader/Reader"; 
 export { SinglePoemPage } from "./reader/SinglePoemReader";
 export { SingleTranslationPage } from "./reader/SingleTranslationReader";
-export { ExplorePage } from "./explore/ExplorePage";
+
+// Explore entry
+export { ExploreView } from "./explore/ExploreView";
 
 // Types 
 export type {

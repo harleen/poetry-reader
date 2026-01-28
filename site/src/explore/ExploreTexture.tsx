@@ -1,3 +1,5 @@
+import "./texture.css";
+
 type Props = {
   terms: string[];
 };
