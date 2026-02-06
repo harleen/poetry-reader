@@ -1,9 +1,10 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ComponentType } from "react";
 import type { ReadingModel } from "../models/readingModel";
 import type { MotifIndex } from "../models/motifModel";
 
 import { MotifsSection } from "./MotifsSection";
 import { MotifResults } from "./MotifResults";
+import type { MotifResultsProps } from "./MotifResults";
 import { ExploreTexture } from "./ExploreTexture";
 
 import "./explore.css";
@@ -36,12 +37,14 @@ type Props = {
   readingModel: ReadingModel;
   motifStats: MotifIndex;
   onSelectPoem?: (id: string) => void;
+  MotifResultsComponent?: ComponentType<MotifResultsProps>;
 };
 
 export function ExploreView({
   readingModel,
   motifStats,
   onSelectPoem,
+  MotifResultsComponent = MotifResults,
 }: Props) {
 
   const [activeMotif, setActiveMotif] = useState<string | null>(null);
@@ -82,7 +85,7 @@ export function ExploreView({
 
       {/* Results */}
       <div className="explore-card explore-content">
-        <MotifResults
+        <MotifResultsComponent
             readingModel={readingModel}
             motifStats={motifStats}
             activeMotif={activeMotif}

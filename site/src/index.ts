@@ -5,6 +5,7 @@ export { SingleTranslationPage } from "./reader/SingleTranslationReader";
 
 // Explore entry
 export { ExploreView } from "./explore/ExploreView";
+export type { MotifResultsProps } from "./explore/MotifResults";
 
 // Types 
 export type {

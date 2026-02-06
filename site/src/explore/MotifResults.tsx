@@ -1,7 +1,7 @@
 import type { ReadingModel } from "../models/readingModel";
 import type { MotifIndex } from "../models/motifModel";
 
-type Props = {
+export interface MotifResultsProps {
   readingModel: ReadingModel;
   activeMotif: string | null;
   motifStats: MotifIndex;
@@ -13,7 +13,7 @@ export function MotifResults({
   activeMotif,
   motifStats,
   onSelectPoem,
-}: Props) {
+}: MotifResultsProps) {
   // 1. Find the motif entry
   const motifEntry = activeMotif
     ? motifStats.terms.find((t) => t.term === activeMotif)
