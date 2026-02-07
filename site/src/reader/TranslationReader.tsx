@@ -1,9 +1,12 @@
 import type { TranslationPoem } from "../models/readingModel";
 import ReactMarkdown from "react-markdown";
+import { ReadAloud } from "./ReadAloud";
 
 export function TranslationReader({ poem }: { poem: TranslationPoem }) {
+   const speakText = `${poem.title}.\n\n${poem.translation.content}`;
   return (
     <main className="reader-poem translation-poem">
+      <ReadAloud text={speakText} label="Read translation" />
       <div className="translation-grid">
         <section className="translation-col">
           <h2 className="translation-label">Translation</h2>
